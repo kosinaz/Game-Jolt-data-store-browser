@@ -20,7 +20,9 @@ function preload() {
 }
 
 function create() {
-  this.add.text(100, 100, "hey");
+  if (GJAPI.bActive) {
+    this.add.text(100, 100, GJAPI.sUserName + " logged in");
+  }
 
 }
 
