@@ -22,6 +22,13 @@ function preload() {
 function create() {
   if (GJAPI.bActive) {
     this.add.text(100, 100, GJAPI.sUserName + " logged in");
+    GJAPI.DataStoreSet(GJAPI.DATA_STORE_GLOBAL, GJAPI.sUserName + "", "1");
+    GJAPI.DataStoreGetKeys(GJAPI.DATA_STORE_GLOBAL, function (pResponse) {
+      if (!pResponse.keys) return;
+      this.add.text(100, 125, "All users:");
+      for (var i = 0; i < pResponse.keys.length; ++i)
+        this.add.text(100, 150 + i * 25, (i + 1) + ". " + pResponse.keys[i].key);
+    }.bind(this));
   }
 
 }
