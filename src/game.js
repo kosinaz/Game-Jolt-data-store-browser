@@ -8,3 +8,8 @@ var game = new Phaser.Game(1024, 576, Phaser.AUTO, '');
  */
 game.state.add('allUsers', allUsers, true);
 game.state.add('selectedUser', selectedUser);
+
+game.style = {
+  font: 'bold 10pt Arial',
+  fill: '#fff'
+};

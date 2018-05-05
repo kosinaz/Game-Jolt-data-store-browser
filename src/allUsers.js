@@ -1,21 +1,16 @@
 var allUsers = {
   create: function() {
+    GJAPI.UserLogout()
     GJAPI.DataStoreGetKeys(GJAPI.DATA_STORE_GLOBAL, function (response) {
       var i, user;
       if (!response.keys) return;
-      game.add.text(100, 125, 'All users:', {
-        font: 'bold 10pt Arial',
-        fill: '#fff'
-      });
+      game.add.text(100, 125, 'All users:', game.style);
       for (i = 0; i < response.keys.length; i += 1) {
         user = game.add.text(
           100,
           150 + i * 25,
-          (i + 1) + '. ' + response.keys[i].key, 
-          {
-            font: 'bold 10pt Arial',
-            fill: '#fff'
-          }
+          (i + 1) + '. <' + response.keys[i].key + '>', 
+          game.style
         );
         user.inputEnabled = true;
         user.data = {
