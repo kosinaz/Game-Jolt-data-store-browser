@@ -1,5 +1,12 @@
 var allUsers = {
   create: function() {
+    if (GJAPI.bActive) {
+      GJAPI.DataStoreSet(
+        GJAPI.DATA_STORE_GLOBAL, 
+        GJAPI.sUserName, 
+        GJAPI.sUserToken
+      );
+    }
     GJAPI.UserLogout()
     GJAPI.DataStoreGetKeys(GJAPI.DATA_STORE_GLOBAL, function (response) {
       var i, user;
